@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './styles.css'
 import NewTodoForms from './NewTodoForms'
+import TodoList from './TodoList'
 
 export default function App() {
   // Set the value todos in the array / connect with onSubmit={handleSubmit}
@@ -41,30 +42,7 @@ export default function App() {
     <>
       <NewTodoForms onSubmit={addTodo}/>
       <h1 className="header">ToDo List</h1>
-      <ul className="list">
-        {/* if todos is false then display "No Todos"  */}
-        {todos.length === 0 && 'No Todos'}
-        {todos.map((todo) => {
-          return (
-            <li key={todo.id}>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={todo.completed}
-                  onChange={(e) => toggleTodo(todo.id, e.target.checked)}
-                />
-                {todo.title}
-              </label>
-              <button
-                onClick={() => deleteTodo(todo.id)}
-                className="btn btn-danger"
-              >
-                Delete
-              </button>
-            </li>
-          )
-        })}
-      </ul>
+      <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo}/>
     </>
   )
 }

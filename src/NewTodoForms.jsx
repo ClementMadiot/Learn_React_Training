@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export function NewTodoForms (props) {
+export function NewTodoForms ({ onSubmit }) {
   
   // Set an empty value in the input / connect with value={newItem} and onChange={(e) => setNewItem(e.target.value)}
   const [newItem, setNewItem] = useState('')
@@ -10,7 +10,7 @@ export function NewTodoForms (props) {
     // set up the input value to empty after validation
     if(newItem === "") return
 
-    props.onSubmit(newItem)
+    onSubmit(newItem)
 
     setNewItem('')
     // set the todos with the method map in the ul to display it
